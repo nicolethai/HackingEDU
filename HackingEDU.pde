@@ -1,7 +1,7 @@
 
 int startX, startY;
 int startSize = 50;
-color startColor, newColor, hiColor;
+color startColor, newColor, hiColor, currentColor;
 boolean startButtonOver = false;
 
 void setup() {
@@ -11,6 +11,7 @@ void setup() {
 	startColor = color(255);
 	newColor = color(0);
 	hiColor = color(125);
+	currentColor = startColor;
 
 }
 
@@ -24,7 +25,7 @@ void draw() {
 	else {
 		fill(startColor);
 	}*/
-	fill(startColor);
+	fill(currentColor);
 	rect(startX, startY, startSize, startSize);
 
 }
@@ -38,7 +39,12 @@ void update(int X, int Y) {
 
 void mouseClicked() {
 	if (startButtonOver) {
-		startColor = newColor;
+		if (currentColor == startColor) {
+			currentColor = newColor;
+		}
+		else {
+			currentColor = startColor;
+		}
 	}
 }
 
@@ -50,4 +56,8 @@ boolean overButton (int x, int y, int width, int height) {
 	else {
     	return false;
 	}
+}
+
+void doSomething() {
+
 }
